@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: task-manager
+data:
+  postgres-db: tasksdb
+  postgres-host: postgres-service
+  postgres-port: "5432"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: task-manager
+data:
+  db-host: postgres-service
+  db-name: tasksdb
+  db-port: "5432"
+  port: "3001"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: task-manager
+data:
+  backend-url: /api
+  port: "3000"

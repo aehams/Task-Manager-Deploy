@@ -6,8 +6,12 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/config', (req, res) => {
+    // Return the backend URL based on environment
+    // When BACKEND_URL is set (from ConfigMap), use it as-is
+    // Otherwise default to relative /api path
+    const backendUrl = process.env.BACKEND_URL || '/api';
     res.json({
-        backendUrl: process.env.BACKEND_URL || 'http://localhost:3001'
+        backendUrl: backendUrl
     });
 });
 

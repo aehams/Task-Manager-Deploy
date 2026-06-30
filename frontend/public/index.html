@@ -38,7 +38,7 @@
 
         async function loadTasks() {
             try {
-                const response = await fetch(`${backendUrl}/api/tasks`);
+                const response = await fetch(`${backendUrl}/tasks`);
                 const tasks = await response.json();
                 const list = document.getElementById('taskList');
                 list.innerHTML = '';
@@ -58,7 +58,7 @@
             if (!title) return;
 
             try {
-                await fetch(`${backendUrl}/api/tasks`, {
+                await fetch(`${backendUrl}/tasks`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ title })
