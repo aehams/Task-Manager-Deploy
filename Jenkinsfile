@@ -8,6 +8,9 @@ pipeline {
     }
 
     environment {
+        // macOS Homebrew PATH
+        PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${env.PATH}"
+        
         // AWS ECR Configuration
         AWS_ACCOUNT_ID = credentials('aws-account-id')
         AWS_REGION = "${params.AWS_REGION}"
