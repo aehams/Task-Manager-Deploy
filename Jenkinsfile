@@ -54,13 +54,13 @@ pipeline {
         stage('Build Frontend Docker Image') {
             steps {
                 script {
-                    echo "🔨 Building Frontend Docker image..."
+                    echo "🔨 Building Frontend Docker image for linux/amd64..."
                     sh '''
                         cd frontend
-                        docker build \
+                        docker buildx build --platform linux/amd64 \
                             -t ${FRONTEND_REPO}:${BUILD_TAG} \
                             -t ${FRONTEND_REPO}:latest \
-                            .
+                            --load .
                         docker images | grep ${FRONTEND_REPO}
                     '''
                 }
@@ -70,13 +70,13 @@ pipeline {
         stage('Build Backend Docker Image') {
             steps {
                 script {
-                    echo "🔨 Building Backend Docker image..."
+                    echo "🔨 Building Backend Docker image for linux/amd64..."
                     sh '''
                         cd backend
-                        docker build \
+                        docker buildx build --platform linux/amd64 \
                             -t ${BACKEND_REPO}:${BUILD_TAG} \
                             -t ${BACKEND_REPO}:latest \
-                            .
+                            --load .
                         docker images | grep ${BACKEND_REPO}
                     '''
                 }
