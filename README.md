@@ -455,20 +455,16 @@ curl http://task-manager.local/api/health
 ![AWS EKS Nodes](./screenshots/08-eks-nodes.png)
 
 ### 9. Jenkins Pipeline Success
-![Jenkins Pipeline Success](./screenshots/09-jenkins-pipeline.png)
 
----
 
-## References
-
-- [Kubernetes Documentation](https://kubernetes.io/docs/)
-- [AWS EKS](https://aws.amazon.com/eks/)
-- [AWS ECR](https://aws.amazon.com/ecr/)
-- [Docker Documentation](https://docs.docker.com/)
-- [Minikube](https://minikube.sigs.k8s.io/)
-- [Jenkins Pipeline](https://www.jenkins.io/doc/book/pipeline/)
-- [Helm Charts](https://helm.sh/)
-
+![alt text](screenshots/image.png)
+![alt text](screenshots/image-1.png)
+![alt text](screenshots/image-2.png)
+![alt text](screenshots/image-3.png)
+![alt text](screenshots/image-5.png)
+![alt text](screenshots/image-6.png)
+![alt text](screenshots/image-4.png)
+![alt text](screenshots/image7.png)
 ---
 
 ## License
