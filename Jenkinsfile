@@ -142,11 +142,15 @@ pipeline {
                 script {
                     echo "📝 Updating Kubernetes manifests with new image tags..."
                     sh '''
-                        # Update Backend deployment
-                        sed -i "" "s|backend:latest|${ECR_REGISTRY}/${BACKEND_REPO}:${BUILD_TAG}|g" k8s/backend-deployment.yaml
+                        # Update Backend deployment - replace local image
+                        sed -i "" "s|task-backend:latest|${ECR_REGISTRY}/${BACKEND_REPO}:${BUILD_TAG}|g" k8s/backend-deployment.yaml
+                        # Handle previous ECR images
+                        sed -i "" "s|${ECR_REGISTRY}/${BACKEND_REPO}:[^ ]*|${ECR_REGISTRY}/${BACKEND_REPO}:${BUILD_TAG}|g" k8s/backend-deployment.yaml
                         
-                        # Update Frontend deployment
-                        sed -i "" "s|frontend:latest|${ECR_REGISTRY}/${FRONTEND_REPO}:${BUILD_TAG}|g" k8s/frontend-deployment.yaml
+                        # Update Frontend deployment - replace local image
+                        sed -i "" "s|task-frontend:latest|${ECR_REGISTRY}/${FRONTEND_REPO}:${BUILD_TAG}|g" k8s/frontend-deployment.yaml
+                        # Handle previous ECR images
+                        sed -i "" "s|${ECR_REGISTRY}/${FRONTEND_REPO}:[^ ]*|${ECR_REGISTRY}/${FRONTEND_REPO}:${BUILD_TAG}|g" k8s/frontend-deployment.yaml
                         
                         # Verify changes
                         echo "Updated Backend:"
