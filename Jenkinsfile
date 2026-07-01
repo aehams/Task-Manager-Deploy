@@ -3,8 +3,8 @@ pipeline {
 
     parameters {
         string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Git branch to checkout')
-        string(name: 'AWS_REGION', defaultValue: 'us-east-1', description: 'AWS Region for ECR')
-        string(name: 'ECR_REGISTRY', defaultValue: '123456789012.dkr.ecr.us-east-1.amazonaws.com', description: 'AWS ECR Registry URL')
+        string(name: 'AWS_REGION', defaultValue: 'eu-north-1', description: 'AWS Region for ECR')
+        string(name: 'ECR_REGISTRY', defaultValue: '381304436206.dkr.ecr.eu-north-1.amazonaws.com', description: 'AWS ECR Registry URL')
     }
 
     environment {
@@ -14,8 +14,8 @@ pipeline {
         ECR_REGISTRY = "${params.ECR_REGISTRY}"
         
         // Repository names
-        BACKEND_REPO = 'task-backend'
-        FRONTEND_REPO = 'task-frontend'
+        BACKEND_REPO = 'backend'
+        FRONTEND_REPO = 'frontend'
         
         // Image tags
         BUILD_TAG = "${BUILD_NUMBER}-${GIT_COMMIT.take(7)}"
@@ -40,7 +40,7 @@ pipeline {
                         $class: 'GitSCM',
                         branches: [[name: "${params.GIT_BRANCH}"]],
                         userRemoteConfigs: [[
-                            url: 'https://github.com/your-org/devops-task-manager.git',
+                            url: 'https://github.com/aehams/Task-Manager-Deploy.git',
                             credentialsId: 'github-credentials'
                         ]]
                     ])
@@ -140,10 +140,10 @@ pipeline {
                     echo "📝 Updating Kubernetes manifests with new image tags..."
                     sh '''
                         # Update Backend deployment
-                        sed -i "s|task-backend:latest|${ECR_REGISTRY}/${BACKEND_REPO}:${BUILD_TAG}|g" k8s/backend-deployment.yaml
+                        sed -i "" "s|backend:latest|${ECR_REGISTRY}/${BACKEND_REPO}:${BUILD_TAG}|g" k8s/backend-deployment.yaml
                         
                         # Update Frontend deployment
-                        sed -i "s|task-frontend:latest|${ECR_REGISTRY}/${FRONTEND_REPO}:${BUILD_TAG}|g" k8s/frontend-deployment.yaml
+                        sed -i "" "s|frontend:latest|${ECR_REGISTRY}/${FRONTEND_REPO}:${BUILD_TAG}|g" k8s/frontend-deployment.yaml
                         
                         # Verify changes
                         echo "Updated Backend:"
