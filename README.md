@@ -429,39 +429,14 @@ curl http://task-manager.local/api/health
 ---
 
 ## Project Screenshots
-
-### 1. Docker Compose Running
-![Docker Compose Running](./screenshots/01-docker-compose.png)
-
-### 2. Minikube Application
-![Minikube Application](./screenshots/02-minikube-app.png)
-
-### 3. kubectl get pods
-![kubectl get pods](./screenshots/03-kubectl-pods.png)
-
-### 4. kubectl get services
-![kubectl get services](./screenshots/04-kubectl-services.png)
-
-### 5. kubectl get ingress
-![kubectl get ingress](./screenshots/05-kubectl-ingress.png)
-
-### 6. Application Running on Kubernetes
-![Application Running](./screenshots/06-app-kubernetes.png)
-
-### 7. AWS ECR Repositories
-![AWS ECR Repositories](./screenshots/07-ecr-repos.png)
-
-### 8. AWS EKS Nodes
-![AWS EKS Nodes](./screenshots/08-eks-nodes.png)
-
-### 9. Jenkins Pipeline Success
-
-
+![alt text](screenshots/image10.png)
+![alt text](screenshots/image8.png)
 ![alt text](screenshots/image.png)
 ![alt text](screenshots/image-1.png)
 ![alt text](screenshots/image-2.png)
 ![alt text](screenshots/image-3.png)
 ![alt text](screenshots/image-5.png)
+![alt text](screenshots/image9.png)
 ![alt text](screenshots/image-6.png)
 ![alt text](screenshots/image-4.png)
 ![alt text](screenshots/image7.png)
